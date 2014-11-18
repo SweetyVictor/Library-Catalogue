@@ -7,9 +7,24 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
-public class BritishLibraryCatalogue {
+public class BritishLibraryCatalogue implements Searchable {
 
     // imagine that each new instance of this object uses more than 500MB of RAM
+
+    private static BritishLibraryCatalogue britishLibraryCatalogue = null;
+
+    private BritishLibraryCatalogue() {}
+
+    public static synchronized BritishLibraryCatalogue getInstance() {
+
+        // lazy initialisation
+
+        if (britishLibraryCatalogue == null) {
+            britishLibraryCatalogue = new BritishLibraryCatalogue();
+        }
+
+        return britishLibraryCatalogue;
+    }
 
     private final Collection<Book> catalogue = allTheBooks();
 
