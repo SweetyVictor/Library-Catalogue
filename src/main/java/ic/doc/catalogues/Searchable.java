@@ -9,6 +9,6 @@ import java.util.List;
  */
 public interface Searchable {
 
-    public List<Book> searchFor(String author);
+    List<Book> searchFor(String author);
 
 }

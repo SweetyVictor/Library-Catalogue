@@ -1,13 +1,10 @@
 package ic.doc.catalogues;
 
 import ic.doc.Book;
-
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.List;
 
-public class BritishLibraryCatalogue implements Searchable {
+public class BritishLibraryCatalogue extends Catalogue {
 
     // imagine that each new instance of this object uses more than 500MB of RAM
 
@@ -26,20 +23,7 @@ public class BritishLibraryCatalogue implements Searchable {
         return britishLibraryCatalogue;
     }
 
-    private final Collection<Book> catalogue = allTheBooks();
-
-    public List<Book> searchFor(String author) {
-
-        List<Book> results = new ArrayList<>();
-        for (Book book : catalogue) {
-            if (book.isWrittenBy(author)) {
-                results.add(book);
-            }
-        }
-        return results;
-    }
-
-    private Collection<Book> allTheBooks() {
+    protected Collection<Book> allTheBooks() {
         return Arrays.asList(
             new Book("A Tale of Two Cities", "Dickens"),
             new Book("Pride and Prejudice", "Austen"),
